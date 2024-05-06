@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import {
   FormGroup,
   FormBuilder,
-  FormControl,
   Validators,
 } from '@angular/forms';
 import { ProductService } from '../../services/product.service';
@@ -33,6 +32,7 @@ export class ProductAddComponent implements OnInit {
   add() {
     if (this.productAddForm.valid) {
       let productModel = Object.assign({}, this.productAddForm.value);
+      console.log(productModel)
       this.productService.add(productModel).subscribe((response) => {
         console.log(response);
         this.toastrService.success(response.message, 'Başarılı');
@@ -41,4 +41,7 @@ export class ProductAddComponent implements OnInit {
       this.toastrService.error('Formunuz eksik', 'Dikkat');
     }
   }
+
+  
+
 }
